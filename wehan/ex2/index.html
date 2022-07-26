@@ -17,14 +17,23 @@
 </head>
 <body>
     <h2>Display all cars</h2>
+    <div id="content"></div>
 
 <script>
-    //AJAX Code
+    
     const xml = new XMLHttpRequest();
     xml.open("get", 'displayAll.php');
     xml.onload = function(){
-        const info = JSON.parse(xml.responseText);
-        console.log(info.data);
+        if (xml.status == 200) {
+            const infoArray = JSON.parse(xml.responseText);
+        console.log(infoArray);
+        for(const cars of infoArray.data){
+            let content = document.getElementById('content');content.innerHTML+=`<h1 id="cars">${cars.name}</h1>
+            <img src="${cars.picture}" alt="">`;
+        }
+        }
+        
+        
     };
     xml.send();
     
