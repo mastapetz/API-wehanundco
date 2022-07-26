@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
+    <title>Exercise</title>
+    
 </head>
 <body>
-    
+    <div class="content text-center"></div>
+
+
+
+    <script>
+        function joke(){
+            const xml = new XMLHttpRequest();
+            xml.open("GET","joke.php" );
+            xml.onload = function(){
+                console.log(xml.responseText)
+                const jokeArray = JSON.parse(xml.responseText);
+                console.log(jokeArray);
+                let content = document.getElementsByClassName('content')[0];
+                content.innerHTML = `<h1 id="joke">${jokeArray.joke}</h1>`;
+
+            };
+            xml.send();
+        }
+        joke()
+    </script>
+   
 </body>
 </html>
