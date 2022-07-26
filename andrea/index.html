@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="content"></div>
+
+    <script>
+        function serri() {
+            const xml = new XMLHttpRequest();
+            xml.open("GET", "jokes.php");
+            xml.onload = function() {
+                console.log(xml.responseText)
+                const jokesArray = JSON.parse(xml.responseText);
+                console.log(jokesArray);
+                let content = document.getElementsByClassName('content')[0];
+                content.innerHTML = `<p class="serri"> ${jokesArray.serri}</p>`;
+
+            };
+            xml.send();
+        }
+        serri()
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
