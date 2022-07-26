@@ -29,7 +29,8 @@
         console.log(infoArray);
         for(const cars of infoArray.data){
             let content = document.getElementById('content');content.innerHTML+=`<h1 id="cars">${cars.name}</h1>
-            <img src="${cars.picture}" alt="">`;
+            <img src="${cars.picture}" alt="">
+            <p>${cars.price}€</p>`;
         }
         }
         
@@ -38,6 +39,7 @@
     xml.send();
     
 </script>
+
 </body>
 </html>
 </body>
